@@ -1,4 +1,4 @@
-import useAwaitMemo from '../useAwaitMemo';
+import useAwaitMemo from '../hooks/useAwaitMemo';
 import { mount } from '@cypress/react';
 
 const asyncTask = () => new Promise<string>((res) => {

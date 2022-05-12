@@ -1,4 +1,4 @@
-import useSetLikeState from '../useSetLikeState';
+import useSetLikeState from '../hooks/useSetLikeState';
 import { mount } from '@cypress/react';
 
 function Wrapper({ add }: { add?: number }) {

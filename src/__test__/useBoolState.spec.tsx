@@ -1,4 +1,4 @@
-import useBoolState from '../useBoolState';
+import useBoolState from '../hooks/useBoolState';
 import { mount } from '@cypress/react';
 
 function Switch() {

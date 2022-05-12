@@ -68,4 +68,34 @@ const [value,  setValue] = asImmer(valueFromState, setValueFromState);
 // can be use inline
 const [value, setValue] = asImmer(...useCustomState());
 ```
-- createStateContext (in progress)
+- createStateContext - make creating context with state easier
+```tsx
+// Get Provider and Hook. Init value can be place here
+const [TextProvider, useText] = createStateContext<Type>('init value');
+
+function App() {
+  return (
+    // value here override value from createStateContext
+    <TextProvider value="override">
+      <Input />
+      <Text />
+    </TextProvider>
+  )
+}
+
+function Input() {
+  const [value, setText] = useText();
+  
+  return (
+    <input value={value} onChange={(ev) => setText(ev.currentTarget.value)} />
+  )
+}
+
+function Text() {
+  const [value] = useText();
+
+  return (
+    <p>{value}</p>
+  )
+}
+```
