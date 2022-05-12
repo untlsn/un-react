@@ -25,16 +25,7 @@ const value = useAwaitMemo(
   }
 );
 ```
-- useImmer - just wrap all update function in produce
-```js
-// without
-const [value, setValue] = useState();
-setValue(produce(update));
-
-// with
-const [value, setValue] = useImmer();
-setValue(update)
-```
+- useImmer - shortcut of asImmer(...useState())
 - useBoolState - easier bools states
 ```jsx
 const [value, setValue] = useBoolState(); // false is default
@@ -60,6 +51,7 @@ return (
   </>
 )
 ```
+- useModalState - shortcut of asModal(...useState)
 
 ## Libs:
 - asImmer - work like useImmer, but it isn't hook and work with custom hooks
@@ -98,4 +90,19 @@ function Text() {
     <p>{value}</p>
   )
 }
+```
+- asModal - extend state with useful functions for forms (Proxy)
+```tsx
+const [value, setValue] = asModal(...useState(''));
+
+// (ev) => setValue(ev.currentTarget.value)
+<imput onChange={setValue.value} />
+// (ev) => setValue(ev.currentTarget.checked)
+<input type="checkbox" onChange={setValue.check} />
+// () => setValue(5)
+<button onChange={setValue.const(5)}>Click</button>
+// (ev) => setValue(ev.custom)
+<custom onChange={setValue.custom} />
+// (...args) => setValue(args[0])
+<custom onChange={setValue.get(0)} />
 ```
