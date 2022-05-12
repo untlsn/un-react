@@ -1,6 +1,6 @@
 import { StateSetter } from '../types';
 
-interface Setter<T> extends StateSetter<T>, Record<string, any> {
+export interface Setter<T> extends StateSetter<T>, Record<string, any> {
   change(ev: any): void
   check(ev: any): void
   const(val: T): () => void
