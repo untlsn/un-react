@@ -25,7 +25,16 @@ const value = useAwaitMemo(
   }
 );
 ```
-- useImmer (in progress)
+- useImmer - just wrap all update function in produce
+```js
+// without
+const [value, setValue] = useState();
+setValue(produce(update));
+
+// with
+const [value, setValue] = useImmer();
+setValue(update)
+```
 - useBoolState - easier bools states
 ```jsx
 const [value, setValue] = useBoolState(); // false is default
@@ -36,7 +45,6 @@ const [value, setValue] = useBoolState(); // false is default
 <button onClick={() => setValue(false)}>Close</button> // with value
 
 ```
-- useSetState (in progress)
 - useSetLikeState - mimic native Set
 ```jsx
 const values = useSetLikeState(); // [] is default
@@ -54,5 +62,10 @@ return (
 ```
 
 ## Libs:
-- asImmer (in progress)
+- asImmer - work like useImmer, but it isn't hook and work with custom hooks
+```js
+const [value,  setValue] = asImmer(valueFromState, setValueFromState);
+// can be use inline
+const [value, setValue] = asImmer(...useCustomState());
+```
 - createStateContext (in progress)
