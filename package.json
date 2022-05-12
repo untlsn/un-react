@@ -16,6 +16,9 @@
     "url": "https://github.com/untlsn/un-react/issues"
   },
   "homepage": "https://github.com/untlsn/un-react#readme",
+  "peerDependencies": {
+    "react": "^18.1.0"
+  },
   "devDependencies": {
     "@cypress/react": "^5.12.4",
     "@cypress/vite-dev-server": "^2.2.3",
