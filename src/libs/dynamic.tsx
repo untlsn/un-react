@@ -10,6 +10,15 @@ function DefaultFallback() {
   );
 }
 
+/**
+ * Next-like dynamic component import
+ * @example ```tsx
+ * const Component = dynamic(
+ *   () => import('./path/to/component'),
+ *   { fallback: <p>Loading</p> }
+ * );
+ * ```
+ */
 const dynamic = (dynamicImport: () => Promise<any>, options: DynamicOptions = {}) => {
   function DynamicComponent() {
     const Fallback = options.fallback || DefaultFallback;

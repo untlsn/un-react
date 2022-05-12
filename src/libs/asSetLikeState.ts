@@ -9,6 +9,23 @@ interface SetLikeState<T> {
   map<R>(callback: (value: T, index: number, arr: T[]) => R): R[]
 }
 
+/**
+ * Mimic native Set
+ * @example ```
+ * const values = asSetLikeState(useState(new Set()));
+ *
+ * return (
+ *   <>
+ *     <button onClick={values.add(values.size)}>Add num</button>
+ *     <ul>
+ *       values.map( // shorthand for [...values].map
+ *         (val) => <li key={val}>{val}</li>
+ *       )
+ *     </ul>
+ *   </>
+ * )
+ * ```
+ */
 export default function asSetLikeState<T>([values, setValues]: State<Set<T>>): SetLikeState<T> {
   const setter = (callback: (set: Set<T>) => void) => {
     setValues((old) => {

@@ -7,6 +7,25 @@ export interface Setter<T> extends StateSetter<T>, Record<string, any> {
   get(index: number): (...args: any) => void
 }
 
+/**
+ * Extend state with useful functions for forms
+ * @Proxy
+ * @example ```tsx
+ * const [value, _setValue] = useState('');
+ * const setValue = asModal(_setValue)
+ *
+ * // (ev) => setValue(ev.currentTarget.value)
+ * <imput onChange={setValue.value} />
+ * // (ev) => setValue(ev.currentTarget.checked)
+ * <input type="checkbox" onChange={setValue.check} />
+ * // () => setValue(5)
+ * <button onChange={setValue.const(5)}>Click</button>
+ * // (ev) => setValue(ev.custom)
+ * <custom onChange={setValue.custom} />
+ * // (...args) => setValue(args[0])
+ * <custom onChange={setValue.get(0)} />
+ * ```
+ */
 export default function asModal<T>(setValue: StateSetter<T>) {
   return new Proxy(setValue, {
     get(__: any, p: string): any {
