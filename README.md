@@ -26,7 +26,16 @@ const value = useAwaitMemo(
 );
 ```
 - useImmer (in progress)
-- useBoolState (in progress)
+- useBoolState - easier bools states
+```js
+const [value, setValue] = useBoolState(); // false is default
+
+<button onClick={setValue.swtich}>Switch</button> // will switch value
+<button onClick={setValue.true}>Open</button> // will switch value to true
+<button onClick={setValue.false}>Close</button> // will switch value to false
+<button onClick={() => setValue(false)}>Close</button> // with value
+
+```
 - useSetState (in progress)
 - useSetLikeState (in progress)
 

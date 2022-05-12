@@ -1,6 +1,5 @@
 import useAwaitMemo from '../useAwaitMemo';
 import { mount } from '@cypress/react';
-import * as React from 'react';
 
 const asyncTask = () => new Promise<string>((res) => {
   setTimeout(() => {
