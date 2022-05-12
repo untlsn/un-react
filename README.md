@@ -27,7 +27,7 @@ const value = useAwaitMemo(
 ```
 - useImmer (in progress)
 - useBoolState - easier bools states
-```js
+```jsx
 const [value, setValue] = useBoolState(); // false is default
 
 <button onClick={setValue.swtich}>Switch</button> // will switch value
@@ -37,7 +37,21 @@ const [value, setValue] = useBoolState(); // false is default
 
 ```
 - useSetState (in progress)
-- useSetLikeState (in progress)
+- useSetLikeState - mimic native Set
+```jsx
+const values = useSetLikeState(); // [] is default
+
+return (
+  <>
+    <button onClick={values.add(values.size)}>Add num</button> // .add will triger rerender
+    <ul>
+      values.map( // shorthand for [...values].map
+        (val) => <li key={val}>{val}</li>
+      )
+    </ul>
+  </>
+)
+```
 
 ## Libs:
 - asImmer (in progress)
