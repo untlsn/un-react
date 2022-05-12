@@ -1,14 +1,14 @@
-import { Dispatch, SetStateAction } from 'react';
+import { StateSetter } from '../types';
 
-interface Setter<T> extends Dispatch<SetStateAction<T>>, Record<string, any> {
+interface Setter<T> extends StateSetter<T>, Record<string, any> {
   change(ev: any): void
   check(ev: any): void
   const(val: T): () => void
   get(index: number): (...args: any) => void
 }
 
-export default function asModal<T>(value: T, setValue: Dispatch<SetStateAction<T>>): [T, Setter<T>] {
-  const setter = new Proxy(setValue, {
+export default function asModal<T>(setValue: StateSetter<T>) {
+  return new Proxy(setValue, {
     get(__: any, p: string): any {
       switch (p) {
         case 'value': {
@@ -29,9 +29,4 @@ export default function asModal<T>(value: T, setValue: Dispatch<SetStateAction<T
       }
     }
   }) as Setter<T>;
-
-  return [
-    value,
-    setter,
-  ]
 };
