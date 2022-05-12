@@ -1,6 +1,6 @@
 {
   "name": "unti-react",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A few simple but useful react hooks",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
