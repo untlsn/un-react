@@ -106,3 +106,10 @@ const [value, setValue] = asModal(...useState(''));
 // (...args) => setValue(args[0])
 <custom onChange={setValue.get(0)} />
 ```
+- dynamic - next-like dynamic component import
+```tsx
+const Component = dynamic(
+  () => import('./path/to/component'), 
+  { fallback: <p>Loading</p> }
+);
+```
