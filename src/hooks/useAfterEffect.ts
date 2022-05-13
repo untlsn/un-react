@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function useAfterEffect(effect: () => void, deps: any[]) {
+export default function useAfterEffect(effect: () => void, deps?: any[]) {
   const afterFirstRender = useRef(false);
 
   useEffect(() => {
