@@ -1,14 +1,14 @@
-import { useState } from 'react';
 import useDebouncedEffect from '../hooks/useDebouncedEffect';
 import { useBoolState } from '../hooks';
 import { mount } from '@cypress/react';
+import useCounter from '../hooks/useCounter';
 
 
-export default function Wrapper() {
-  const [count, setCount] = useState(0);
+function Wrapper() {
+  const [count, setCount] = useCounter(0);
   const [bool, setBool] = useBoolState(false);
   useDebouncedEffect(() => {
-    setCount(v => v+1)
+    setCount.inc();
   }, {
     debounce: 500,
     deps: [bool]
