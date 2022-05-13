@@ -1,18 +1,23 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+import useDebouncedCallback from './useDebouncedCallback';
 
 interface UseDebouncedEffectOptions {
   deps?: any[],
   debounce: number
 }
 
+/**
+ * Create effect that can run after debounce
+ *
+ * @example ```tsx
+ * useDebouncedEffect(effect, {
+ *   deps,
+ *   debounce: 500,
+ * })
+ * ```
+ */
 export default function useDebouncedEffect(effect: () => void, options: UseDebouncedEffectOptions) {
-  const debounce = useRef(false);
+  const callback = useDebouncedCallback(effect, options.debounce);
 
-  useEffect(() => {
-    if (!debounce.current) {
-      debounce.current = true;
-      effect();
-      setTimeout(() => debounce.current = false, options.debounce)
-    }
-  }, options.deps || [])
+  useEffect(callback, options.deps || [])
 };
