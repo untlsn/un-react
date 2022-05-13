@@ -1,7 +1,7 @@
 import useDebouncedEffect from '../hooks/useDebouncedEffect';
 import { useBoolState } from '../hooks';
 import { mount } from '@cypress/react';
-import useCounter from '../hooks/useCounter';
+import useCounter from '../libToHook/useCounter';
 
 
 function Wrapper() {

@@ -1,6 +1,6 @@
 import { mount } from '@cypress/react';
 import useAfterEffect from '../hooks/useAfterEffect';
-import useCounter from '../hooks/useCounter';
+import useCounter from '../libToHook/useCounter';
 
 function Wrapper() {
   const [count, setCount] = useCounter(0);

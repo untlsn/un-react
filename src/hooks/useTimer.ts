@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useCounter from './useCounter';
+import useCounter from '../libToHook/useCounter';
 
 interface UseTimerOptions {
   ms: number,

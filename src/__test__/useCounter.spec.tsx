@@ -1,4 +1,4 @@
-import useCounter from '../hooks/useCounter';
+import useCounter from '../libToHook/useCounter';
 import { mount } from '@cypress/react';
 
 function Wrapper() {
