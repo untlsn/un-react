@@ -23,6 +23,7 @@ A few simple but useful react hooks
 - createStateContext - make creating context with state easier
 - dynamic - next-like dynamic component import
 - composeSetter - help to compose state
+- asSetter - convert simple setter function to react-like setter
 ## Libs hook shortcuts
 - useBoolState
 - useImmer
